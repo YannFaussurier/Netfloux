@@ -6,7 +6,7 @@ class ImdbRequest:
         
     @classmethod
     def get_film(cls):
-        answer =  requests.get(cls._base_url+"/SearchMovie"+"/k_t11w0wia"+"/inception 2010")
+        answer =  requests.get(cls._base_url+"/SearchMovie"+"/k_sb9w25u9"+"/inception 2010")
         
         return response.Response(status_code=answer.status_code, content=answer.json())
 

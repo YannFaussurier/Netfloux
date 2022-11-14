@@ -7,7 +7,8 @@ class VersioningEventFacade:
         movies =imdb_request_module.ImdbRequest.get_film().content['results']
         response=[]
         for movie in movies:
-            ratings =imdb_request_module.ImdbRequest.get_rating(movie['id'])
+            ratings =imdb_request_module.ImdbRequest.get_rating(movie['id']).content
+            
             response.append(versioning_event_module.VersioningEvent(movie['id'],movie['title'],movie['image'],ratings))
 
         return response   
