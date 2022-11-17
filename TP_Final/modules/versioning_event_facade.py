@@ -4,12 +4,16 @@ import modules.versioning_event_module as versioning_event_module
 class VersioningEventFacade:
     
     def get_versioning_film():
-        movies =imdb_request_module.ImdbRequest.get_film().content['results']
+        instance= imdb_request_module.ImdbRequest()
+        instance.get_film()
         response=[]
-        for movie in movies:
-            ratings =imdb_request_module.ImdbRequest.get_rating(movie['id']).content
-            
-            response.append(versioning_event_module.VersioningEvent(movie['id'],movie['title'],movie['image'],ratings))
+        title=(getattr(instance,'Film_Name'))
+        id=(getattr(instance,'Film_id'))
+
+        
+        ratings =instance.get_globalrating()
+        Cast = instance.get_cast()
+        response.append(versioning_event_module.VersioningEvent(id,title,ratings,Cast))
 
         return response   
 

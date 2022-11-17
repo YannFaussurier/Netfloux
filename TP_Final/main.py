@@ -6,7 +6,7 @@ def main():
 
     for versioning_event in versioning_events:
         assert isinstance(versioning_event, versioning_event_module.VersioningEvent)
-        print(versioning_event.id,'\n',versioning_event.title,'\n',versioning_event.picture,'\n',versioning_event.rating,'\n','\n')
+        print(versioning_event.title,'\n' ,versioning_event.rating,'\n',versioning_event.cast)
 
     
     
