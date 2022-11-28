@@ -4,9 +4,10 @@ import modules.response as response
 import json
 import streamlit as st
 
+
 class ImdbRequest:
     _base_url = "https://imdb-api.com/API"
-    API_key="k_2c1txez2"
+    API_key="k_t11w0wia"
     Name_movie_search=""
     Film_id=""
     Film_Name=""
@@ -126,20 +127,26 @@ class ImdbRequest:
         #print("Actors : ")
         
         Cast += "Actors : " + "\n\n"
+        ListImage=[]
+        Cast=[]
         
         for i in range(7):
             actors = content_id["actors"][i]["name"]
             character = content_id["actors"][i]["asCharacter"]
             image = content_id["actors"][i]["image"]
             #print(actors + " as " + character + " " + image)
-            Cast+= actors + " as " + character + " " + image +"\n\n"
+            Cast.append(actors + " as " + character + "\n\n")
+            ListImage.append(image)
+
+        CastDict=dict(zip(Cast,ListImage))
+
 
            
-        return Cast
+        return CastDict
 
     @classmethod    
     def get_poster(cls):
-        content_poster = json.loads(requests.get(cls._base_url+"/Posters"+"/k_2c1txez2/"+cls.Film_id).content)
+        content_poster = json.loads(requests.get(cls._base_url+"/Posters/"+cls.API_key+"/"+cls.Film_id).content)
         poster = content_poster['posters']
 
         
@@ -148,7 +155,7 @@ class ImdbRequest:
     @classmethod    
     def get_trailer(cls):
         
-        content_trailer = json.loads(requests.get(cls._base_url+"/Trailer"+"/k_2c1txez2/"+cls.Film_id).content)
+        content_trailer = json.loads(requests.get(cls._base_url+"/Trailer/"+cls.API_key+"/"+cls.Film_id).content)
         trailer = content_trailer['link']
 
         return trailer

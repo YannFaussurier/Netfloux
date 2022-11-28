@@ -17,14 +17,19 @@ def main():
     for versioning_event in versioning_events:
         assert isinstance(versioning_event, versioning_event_module.VersioningEvent)
         print(versioning_event.title,'\n' ,versioning_event.rating,'\n',versioning_event.cast)
-        print("POSTER : ", versioning_event.Poster[0]['link'])
+        #print("POSTER : ", versioning_event.Poster[0]['link'])
         st.image(versioning_event.Poster[0]['link'])
         url = versioning_event.Trailer
         st.write("check out the [Trailer](%s)" % url)
         
+        st.text("you've chosen the movie/serie :")
         st.text(versioning_event.title)
         st.text(versioning_event.rating)
-        st.text(versioning_event.cast)
+        for keys,values in versioning_event.cast.items():
+            st.text(keys)
+            st.image(values, width=200)
+
+        
 
     
     
