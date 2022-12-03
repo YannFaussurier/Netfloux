@@ -1,4 +1,4 @@
-class VersioningEvent:
+class VersioningFilm:
     def __init__(self, id, title,rating,cast,Poster,Trailer):
         
         self.id= id

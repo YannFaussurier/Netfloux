@@ -1,6 +1,4 @@
 import requests
-import modules.response as response
-#import modules.Rating_request as Rating
 import json
 import streamlit as st
 
@@ -15,14 +13,10 @@ class ImdbRequest:
     
     @classmethod
     def get_film(cls,Name_Search):
-        
+        #Cette fonction ve récupérer le titre du film ainsi que son id, l'id est une information essentielle pour pouvoir accéder
+        #aux autres informations du film à travers les autres fonction
 
-        #cls.Name_movie_search=input("Enter the name of the movie you're searching for : ")
         cls.Name_movie_search=Name_Search
-        # answer =  requests.get(cls._base_url+"/SearchMovie"+"/k_sb9w25u9"+"/"+cls.Name_movie_search)
-        
-        # return response.Response(status_code=answer.status_code, content=answer.json())
-        # content retourne le contenu du film
         content = json.loads(requests.get(cls._base_url+"/SearchMovie"+"/"+cls.API_key+"/"+cls.Name_movie_search).content)
         
         
@@ -65,10 +59,6 @@ class ImdbRequest:
     @classmethod
     def get_globalrating(cls):
         
-        #return requests.get(cls._base_url+"/SearchMovie"+"/k_5vnlaa7e"+"/inception 2010")
-
-        # on appelle l'API ratings pour avoir les ratings
-        # content_id est la variable qui stocke tous les ratings
         content_id =json.loads(requests.get(cls._base_url+"/Ratings"+"/"+cls.API_key+"/"+cls.Film_id).content)
 
         # on va faire une transformation pour avoir une moyenne globale
@@ -84,23 +74,20 @@ class ImdbRequest:
         ratings=[note_imDb,note_metacritic,note_theMovieDb,note_rottenTomatoes,note_filmAffinity]
 
 
-        # turn the empty string rating into a numerical value
+        # Conversion de la note en valeur numérique
         for rating in range(len(ratings)):
             if ratings[rating]=="":   #len(ratings[rating])==0:
                 ratings[rating]= ratings[rating] + "0"
-                #C=print(ratings[rating])
-                # To be sure that the loop detects with a null rating
-                #B= print('is NULL')
 
-        # convert the list into a list of numerical values
+
+        # Conversion de la liste en liste de valeurs numériques
         ratings = list(map(float, ratings))
 
-        # note_metacritic and note_rottenTomatoes are rated over 100 so we put them over 10
+        #Selon les sites, les métriques pour noter les film diffèrent, nous effectuons pour que toute les note soient sur 10 (IMDB et ROTTENTOMATOE Sont sur 100)
         ratings[1]=ratings[1]/10
         ratings[3]=ratings[3]/10
 
-        # the final list with transformed ratings
-        # print(ratings)
+        # Calcul de la moyenne de toute les notes
 
         final_note= sum(ratings)/len(ratings)
         return f"The average rating of {cls.Film_Name} is : {final_note} "# {C} {B} " 
