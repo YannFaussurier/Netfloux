@@ -9,9 +9,9 @@ import modules.versioning_film_module as versioning_film_module
 def main():
     
     
-    st.title('Welcome to our application dedicated to film search !')
+    st.title('Welcome to NETFLOUX, our application dedicated to film search !')
     st.text('Here you\'ll be able to search any film you want through the imdb database.')
-    st.text('our application will send back as many informations as possible about the film')
+    st.text('our application will send back as many informations as possible about the film, as well as an average of all the ratings provided by IMDB')
     Search = st.text_input('Enter the name of the film you\'re searching for :', 'inception 2010')
     versioning_events = versioning_film_facade.VersioningFilmFacade.get_versioning_film(Search)
 
