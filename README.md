@@ -6,7 +6,7 @@ Netfloux est une application qui permet à un cinéphile curieux de se renseigne
 
 Grace à un système utilisant la base de donnée du siite web IMDB, vous n'avez qu'a taper le nom du film que vous cherchez, sélectionner votre film parmis la liste déroulante, et notre application vous renverra la note moyenne de tout les avis professionnels répertoriés sur IMDB directement, avec en bonus, des informations additionelles sur le film en question
 
-# De quoi ai-je besoin pour faire fonctionner Netfloux
+# De quoi ai-je besoin pour faire fonctionner netfloux
 
 Netfloux est une application assez simple développée en python qui n'a besoin que de quelques bibliothèques pour fonctionner :
 
