@@ -1,5 +1,9 @@
 # Bienvenue sur le github de NETFLOUX
 
+Pour avoir accès à la présentation bussiness de notre projet, cliquez sur le lien suivant :
+https://epfedu-my.sharepoint.com/:p:/g/personal/anh-kim_chaloupe_epfedu_fr/EVABrh8r1TtOoAU3mkdemp0BvJp5YVEIOHjC5se5Sk-BaQ?CID=55694c1a-f519-e7b4-0abf-d24b31ceac66
+
+
 # Qu'est ce que netfloux ?
 
 Netfloux est une application qui permet à un cinéphile curieux de se renseigner facilement sur n'importe quel film !
