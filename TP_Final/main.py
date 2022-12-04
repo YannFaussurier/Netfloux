@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
 import modules.versioning_film_facade as versioning_film_facade
 import modules.versioning_film_module as versioning_film_module
 
